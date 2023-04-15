@@ -4,7 +4,7 @@
 --*Author: Liu Jiangbo*  
 --*Date: 2023.5.21*
 
-  > Description: 利用现有NLP平台（HanLP）及预训练模型提供的SRL（Semantic Rule Labeling, 语义角色标注）分析结果，通过基于规则的后优化处理和模式匹配，实现规范条文知识的自动抽取及结构化整理。
+  > Description: 利用现有NLP平台（HanLP）预训练模型提供的SRL（Semantic Rule Labeling, 语义角色标注）分析结果，通过基于规则的后优化处理和模式匹配，实现规范条文知识的自动抽取及结构化整理。
 
 - [Project](#project)
   - [抽取流程](#抽取流程)
