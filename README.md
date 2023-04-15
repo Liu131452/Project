@@ -4,7 +4,7 @@
 --*Author: Liu Jiangbo*  
 --*Date: 2023.5.21*
 
-  > Description: 利用现有NLP平台（HanLP）及预训练模型提供的SRL（Semantic Rule Labeling, 语义角色标注）分析结果，通过后优化处理和模式匹配实现知识自动抽取，将条文中蕴含的施工知识结构化整理。
+  > Description: 利用现有NLP平台（HanLP）及预训练模型提供的SRL（Semantic Rule Labeling, 语义角色标注）分析结果，通过基于规则的后优化处理和模式匹配，实现规范条文知识的自动抽取及结构化整理。
 
 - [Project](#project)
   - [抽取流程](#抽取流程)
@@ -35,9 +35,9 @@
     >一个句子的SRL结果可能具有多个谓词论元结构(Predicate - Argument, PA)，每个结构由多个四元组形式的 SRL元素构成：(entity, type, begin, end)，即(谓词或论元，SRL标签，词语在分词列表的起始索引，结束索引)。
 
 2. SRL后优化处理
-    1). 词语包含处理
-    2). 区间合并处理
-    3). 无效SRL组剔除处理
+    (1). 词语包含处理
+    (2). 区间合并处理
+    (3). 无效SRL组剔除处理
 
 ![NLP-SRL处理步骤](./img/2.jpg)
 
@@ -49,8 +49,8 @@
 ![优化处理前后 SRL 结果可视化对比](./img/3.jpg)
 
 ### STEP4: 知识模式匹配
-*针对单个SRL组进行匹配处理*
-1. 基于SRL语义角色的主宾分析, 标签重构
+*针对单个SRL组进行匹配处理，将语义角色对应的词语转与语义概念进行对齐*
+1. 基于SRL语义角色的主宾分析，标签重构
 2. 知识映射
 
 ## 环境
@@ -63,15 +63,22 @@
 7. tqdm
 
 ## 使用
-    前提：配置hanlp模型  hanlp_conf.py
-    *默认多任务联合模型（如下模型可选，自动下载）、细粒度分词（tok/fine）进行处理，支持导入自定义领域词典*
+1.前提：配置HanLP模型
+
+    原始模型可由如下方式导入：
     > HanLP = hanlp.load(hanlp.pretrained.mtl.CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ERNIE_GRAM_ZH)
+              or
     > HanLP = hanlp.load(hanlp.pretrained.mtl.CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ELECTRA_BASE_ZH)
 
-1. 文本处理     data_preprocess.py
+    自定义模型在导入原始模型的基础上，通过config文件夹中的hanlp_conf.py文件配置，主要基于model_configuration函数。
 
-2. 知识抽取     pipeline.py
-  (*支持导出json、csv、excel格式的抽取结果*)
+    默认多任务联合模型（上述模型可选）、细粒度分词（tok/fine）进行处理，并导入自定义领域词典。
+    
+2.文本处理     data_preprocess.py
+    (*原始规范文本 -> 预处理后的规范文本*)
+
+3.知识抽取     pipeline.py
+    (*支持导出json、csv、excel格式的抽取结果*)
 
 ## 目录结构
 
