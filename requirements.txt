@@ -1,0 +1,5 @@
+hanlp==2.1.0b45
+matplotlib==3.5.1
+numpy==1.21.6
+pandas==1.3.5
+tqdm
