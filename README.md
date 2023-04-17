@@ -32,8 +32,7 @@ Description: 利用现有NLP平台（HanLP）预训练模型提供的SRL分析�
 
 
 ## 抽取流程
-![基于SRL的知识抽取流程](./img/1.jpg "基于SRL的知识抽取流程")
-<center>基于SRL的知识抽取流程</center>
+![基于SRL的知识抽取流程](./img/1.jpg)
 
 ### STEP1: 文本获取与预处理
 *（正则）*
@@ -62,7 +61,7 @@ Description: 利用现有NLP平台（HanLP）预训练模型提供的SRL分析�
 
 ![NLP处理结果](./img/4.jpg)
 
-2. SRL后优化处理
+1. SRL后优化处理
     (1). 词语包含处理
     (2). 区间合并处理
     (3). 无效SRL组(PA结构)剔除处理
@@ -120,7 +119,7 @@ doc.pretty_print()
 
 ## 环境
 1. python 3.7  
-2. hanlp 2.1.0b45  # pip install hanlp -i https://pypi.douban.com/simple/
+2. hanlp 2.1.0b45 # pip install hanlp -i https://pypi.douban.com/simple/
 3. pandas
 4. matplotlib
 5. numpy
